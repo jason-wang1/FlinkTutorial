@@ -1,21 +1,13 @@
-package com.atguigu.apitest.sinktest
+package com.wb.apitest.sinktest
 
 import java.util.Properties
 
-import com.atguigu.apitest.SensorReading
+import com.wb.apitest.SensorReading
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.streaming.api.scala._
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer011.Semantic
 import org.apache.flink.streaming.connectors.kafka.{FlinkKafkaConsumer011, FlinkKafkaProducer011}
 
-/**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
-  * Project: FlinkTutorial
-  * Package: com.atguigu.apitest.sinktest
-  * Version: 1.0
-  *
-  * Created by wushengran on 2019/9/17 15:43
-  */
 object KafkaSinkTest {
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
@@ -43,7 +35,7 @@ object KafkaSinkTest {
       )
 
     // sink
-    dataStream.addSink( new FlinkKafkaProducer011[String]("localhost:9092", "sinkTest", new SimpleStringSchema()) )
+    dataStream.addSink( new FlinkKafkaProducer011[String]( "sinkTest", new SimpleStringSchema(), properties) )
     dataStream.print()
 
     env.execute("kafka sink test")

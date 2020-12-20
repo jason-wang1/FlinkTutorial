@@ -1,25 +1,17 @@
-package com.atguigu.apitest
+package com.wb.apitest
 
 import org.apache.flink.api.common.functions.{FilterFunction, RichMapFunction}
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.scala._
 
-/**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
-  * Project: FlinkTutorial
-  * Package: com.atguigu.apitest
-  * Version: 1.0
-  *
-  * Created by wushengran on 2019/9/17 11:41
-  */
 object TransformTest {
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1)
 
     // 读入数据
-    val inputStream = env.readTextFile("D:\\Projects\\BigData\\FlinkTutorial\\src\\main\\resources\\sensor.txt")
+    val inputPathUrl = this.getClass.getResource("/sensor.txt")
+    val inputStream = env.readTextFile(inputPathUrl.getPath)
 
     // Transform操作
 

@@ -1,20 +1,11 @@
-package com.atguigu.apitest.sinktest
+package com.wb.apitest.sinktest
 
-import com.atguigu.apitest.SensorReading
+import com.wb.apitest.SensorReading
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.connectors.redis.RedisSink
 import org.apache.flink.streaming.connectors.redis.common.config.FlinkJedisPoolConfig
 import org.apache.flink.streaming.connectors.redis.common.mapper.{RedisCommand, RedisCommandDescription, RedisMapper}
 
-/**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
-  * Project: FlinkTutorial
-  * Package: com.atguigu.apitest.sinktest
-  * Version: 1.0
-  *
-  * Created by wushengran on 2019/9/17 16:12
-  */
 object RedisSinkTest {
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment

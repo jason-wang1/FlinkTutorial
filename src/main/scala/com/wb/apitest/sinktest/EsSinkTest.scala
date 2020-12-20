@@ -1,8 +1,8 @@
-package com.atguigu.apitest.sinktest
+package com.wb.apitest.sinktest
 
 import java.util
 
-import com.atguigu.apitest.SensorReading
+import com.wb.apitest.SensorReading
 import org.apache.flink.api.common.functions.RuntimeContext
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.connectors.elasticsearch.{ElasticsearchSinkFunction, RequestIndexer}
@@ -10,15 +10,6 @@ import org.apache.flink.streaming.connectors.elasticsearch6.ElasticsearchSink
 import org.apache.http.HttpHost
 import org.elasticsearch.client.Requests
 
-/**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
-  * Project: FlinkTutorial
-  * Package: com.atguigu.apitest.sinktest
-  * Version: 1.0
-  *
-  * Created by wushengran on 2019/9/17 16:27
-  */
 object EsSinkTest {
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment

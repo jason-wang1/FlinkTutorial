@@ -1,4 +1,4 @@
-package com.atguigu.apitest
+package com.wb.apitest
 
 import java.util.Properties
 
@@ -9,15 +9,6 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011
 
 import scala.util.Random
 
-/**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
-  * Project: FlinkTutorial
-  * Package: com.atguigu.apitest
-  * Version: 1.0
-  *
-  * Created by wushengran on 2019/9/17 10:11
-  */
 
 // 定义传感器数据样例类
 case class SensorReading( id: String, timestamp: Long, temperature: Double )

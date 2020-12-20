@@ -1,16 +1,8 @@
-package com.atguigu.wc
+package com.wb.wc
+
+import java.net.URL
 
 import org.apache.flink.api.scala._
-
-/**
-  * Copyright (c) 2018-2028 尚硅谷 All Rights Reserved 
-  *
-  * Project: FlinkTutorial
-  * Package: com.atguigu.wc
-  * Version: 1.0
-  *
-  * Created by wushengran on 2019/9/16 11:48
-  */
 
 // 批处理代码
 object WordCount {
@@ -19,8 +11,8 @@ object WordCount {
     val env = ExecutionEnvironment.getExecutionEnvironment
 
     // 从文件中读取数据
-    val inputPath = "D:\\Projects\\BigData\\FlinkTutorial\\src\\main\\resources\\hello.txt"
-    val inputDataSet = env.readTextFile(inputPath)
+    val inputPathUrl: URL = this.getClass.getResource("/hello.txt")
+    val inputDataSet = env.readTextFile(inputPathUrl.getPath)
 
     // 分词之后做count
     val wordCountDataSet = inputDataSet.flatMap(_.split(" "))
