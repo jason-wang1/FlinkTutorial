@@ -18,7 +18,8 @@ object TableTest {
     env.setParallelism(1)
 
     // 读入数据
-    val inputStream = env.readTextFile("C:\\Users\\BoWANG\\IdeaProjects\\FlinkTutorial\\src\\main\\resources\\sensor.txt")
+    val inputPathUrl = this.getClass.getResource("/sensor.txt")
+    val inputStream = env.readTextFile(inputPathUrl.getPath)
 
     // Transform操作
     val dataStream = inputStream

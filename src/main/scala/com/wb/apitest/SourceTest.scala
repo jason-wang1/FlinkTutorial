@@ -29,7 +29,8 @@ object SourceTest {
 //    env.fromElements("flink", 1, 32, 3213, 0.324).print("test")
 
     // 2. 从文件中读取数据
-    val stream2 = env.readTextFile("D:\\Projects\\BigData\\FlinkTutorial\\src\\main\\resources\\sensor.txt")
+    val inputPathUrl = this.getClass.getResource("/sensor.txt")
+    val stream2 = env.readTextFile(inputPathUrl.getPath)
 
     // 3. 从kafka中读取数据
     // 创建kafka相关的配置

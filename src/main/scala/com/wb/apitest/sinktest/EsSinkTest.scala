@@ -16,7 +16,8 @@ object EsSinkTest {
     env.setParallelism(1)
 
     // source
-    val inputStream = env.readTextFile("D:\\Projects\\BigData\\FlinkTutorial\\src\\main\\resources\\sensor.txt")
+    val inputPathUrl = this.getClass.getResource("/sensor.txt")
+    val inputStream = env.readTextFile(inputPathUrl.getPath)
 
     // transform
     val dataStream = inputStream

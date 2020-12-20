@@ -24,7 +24,8 @@ object AggregateFunctionTest {
     // 创建表执行环境
     val tableEnv = StreamTableEnvironment.create(env)
 
-    val inputStream: DataStream[String] = env.readTextFile("C:\\Users\\BoWANG\\IdeaProjects\\FlinkTutorial\\src\\main\\resources\\sensor.txt")
+    val inputPathUrl = this.getClass.getResource("/sensor.txt")
+    val inputStream: DataStream[String] = env.readTextFile(inputPathUrl.getPath)
     //    val inputStream: DataStream[String] = env.socketTextStream("localhost", 7777)
 
     // map成样例类类型
