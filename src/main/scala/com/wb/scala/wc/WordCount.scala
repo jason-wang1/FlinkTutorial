@@ -1,9 +1,16 @@
-package com.wb.wc
+package com.wb.scala.wc
 
 import java.net.URL
+import org.apache.flink.streaming.api.scala._
+import org.apache.flink.api.scala.ExecutionEnvironment
 
-import org.apache.flink.api.scala._
-
+/**
+  * Descreption: XXXX<br/>
+  * Date: 2020年12月21日
+  *
+  * @author WangBo
+  * @version 1.0
+  */
 // 批处理代码
 object WordCount {
   def main(args: Array[String]): Unit = {
