@@ -1,0 +1,7 @@
+Bob,25,show
+Ali,23,show
+Amy,23,show
+Ali,23,show
+Bob,25,click
+Bob,23,show
+Ali,23,click
