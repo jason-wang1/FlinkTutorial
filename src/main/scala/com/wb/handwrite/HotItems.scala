@@ -22,7 +22,7 @@ import org.apache.flink.util.Collector
 case class UserBehavior(userId: Long, itemId: Long, categoryId: Int, behavior: String, timestamp: Long)
 case class UserClick(userId: Long, itemId: Long, timestamp: Long)
 // 定义窗口聚合结果样例类
-case class ItemViewCount(var itemId: Long, timestamp: Long, var count: Long)
+case class ItemViewCount(var itemId: Long, windowEnd: Long, var count: Long)
 
 object HotItems {
   def main(args: Array[String]): Unit = {
@@ -42,14 +42,15 @@ object HotItems {
       })
       .assignAscendingTimestamps(_.timestamp * 1000L)
 
-    val windowedStream: WindowedStream[UserClick, Tuple, TimeWindow] = dataStream
+    val windowedStream: WindowedStream[UserClick, Tuple, TimeWindow] =
+      dataStream
       .keyBy("itemId")
       .timeWindow(Time.hours(1), Time.seconds(5))
 
-    val resultStream: DataStream[ItemViewCount] = windowedStream
+    val aggStream: DataStream[ItemViewCount] = windowedStream
       .aggregate(new CountAgg(), new PvProcess())
 
-    resultStream.print().setParallelism(1)
+    aggStream.print().setParallelism(1)
 
     // 执行任务
     env.execute("stream word count job")
